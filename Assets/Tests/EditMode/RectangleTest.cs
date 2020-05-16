@@ -25,8 +25,7 @@ namespace Tests
 
             Assert.IsTrue(rectangle.IsInside(x, y));
         }
-        
-        
+
         [Test]
         public void PointsOnLeftOrRightShouldBeOutsideRectangle(
                 [Values(-3,3)] float x, [Range(-2, 2)] float y)
@@ -49,6 +48,19 @@ namespace Tests
             Rectangle rectangle = new Rectangle(length, breadth);
 
             Assert.IsFalse(rectangle.IsInside(x, y));
+        }
+
+        [Test]
+        public void RandomPointsShouldBeInsideRectangle(
+            [Random(-2f, 2f, 2)] float x,
+            [Random(-1f, 1f, 2)] float y)
+        {
+            const float length = 3;
+            const float breadth = 5;
+
+            Rectangle rectangle = new Rectangle(length, breadth);
+
+            Assert.IsTrue(rectangle.IsInside(x, y));
         }
     }
 }
