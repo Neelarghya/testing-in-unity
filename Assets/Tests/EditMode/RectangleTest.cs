@@ -13,5 +13,18 @@ namespace Tests
             Rectangle rectangle = new Rectangle(length, breadth);
             Assert.AreEqual(area, rectangle.Area());
         }
+        
+        [TestCase(0, 0, true)]
+        [TestCase(3, 3, false)]
+        public void TestIfPointIsInsideRectangle(float x, float y, 
+            bool isInside)
+        {
+            const float length = 3;
+            const float breadth = 5;
+    
+            Rectangle rectangle = new Rectangle(length, breadth);
+    
+            Assert.AreEqual(isInside, rectangle.IsInside(x, y));
+        }
     }
 }
