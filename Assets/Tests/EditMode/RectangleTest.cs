@@ -5,11 +5,13 @@ namespace Tests
 {
     public class RectangleTest
     {
-        [Test]
-        public void TestAreaOfRectangleWithLength2AndBreadth3()
+        [TestCase(2, 3, 6)]
+        [TestCase(7, 5, 35)]
+        public void TestAreaOfRectangleArea(float length, float breadth, 
+                                        float area)
         {
-            Rectangle rectangle = new Rectangle(2, 3);
-            Assert.AreEqual(6, rectangle.Area());
+            Rectangle rectangle = new Rectangle(length, breadth);
+            Assert.AreEqual(area, rectangle.Area());
         }
     }
 }
