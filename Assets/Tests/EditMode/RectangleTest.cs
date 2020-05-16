@@ -7,24 +7,23 @@ namespace Tests
     {
         [TestCase(2, 3, 6)]
         [TestCase(7, 5, 35)]
-        public void TestAreaOfRectangleArea(float length, float breadth, 
-                                        float area)
+        public void TestAreaOfRectangleArea(float length, float breadth,
+            float area)
         {
             Rectangle rectangle = new Rectangle(length, breadth);
             Assert.AreEqual(area, rectangle.Area());
         }
-        
-        [TestCase(0, 0, true)]
-        [TestCase(3, 3, false)]
-        public void TestIfPointIsInsideRectangle(float x, float y, 
-            bool isInside)
+
+        [Test]
+        public void PointsShouldBeInsideRectangle([Range(-2, 2)] float x,
+            [Range(-1, 1)] float y)
         {
             const float length = 3;
             const float breadth = 5;
-    
+
             Rectangle rectangle = new Rectangle(length, breadth);
-    
-            Assert.AreEqual(isInside, rectangle.IsInside(x, y));
+
+            Assert.IsTrue(rectangle.IsInside(x, y));
         }
     }
 }
