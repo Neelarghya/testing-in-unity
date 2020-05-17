@@ -1,6 +1,4 @@
-﻿using System;
-using NUnit.Framework;
-using NUnit.Framework.Constraints;
+﻿using NUnit.Framework;
 using Shapes;
 
 namespace Tests
@@ -77,6 +75,22 @@ namespace Tests
             Rectangle first, Rectangle second, bool isGreater)
         {
             Assert.AreEqual(isGreater, first.IsGreaterThan(second));
+        }
+
+        private static Rectangle[] _rectangles =
+        {
+            new Rectangle(2, 3),
+            new Rectangle(4, 2),
+            new Rectangle(1, 5),
+            new Rectangle(7, 3)
+        };
+
+        [Test, Sequential]
+        public void TestPerimeterOfARectangle(
+            [ValueSource(nameof(_rectangles))] Rectangle rectangle, 
+            [Values(10, 12, 12, 20)] float perimeter)
+        {
+            Assert.AreEqual(perimeter, rectangle.Perimeter());
         }
     }
 }
